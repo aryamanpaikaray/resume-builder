@@ -1,0 +1,217 @@
+.resume-preview {
+  background: #fff;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 16mm 18mm;
+  font-family: 'Georgia', serif;
+  font-size: 10pt;
+  color: #1a1a1a;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  border-radius: 4px;
+  line-height: 1.5;
+}
+
+/* HEADER */
+.rv-header {
+  text-align: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 2.5px solid #1a1a2e;
+}
+
+.rv-name {
+  font-size: 24pt;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 6px;
+  letter-spacing: 1px;
+}
+
+.rv-contacts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 9pt;
+  color: #555;
+}
+
+.rv-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 4px;
+  font-size: 9pt;
+}
+
+.rv-links a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+/* SECTIONS */
+.rv-section {
+  margin-bottom: 14px;
+}
+
+.rv-section-title {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 3px;
+  margin: 0 0 8px;
+}
+
+/* ENTRIES */
+.rv-entry {
+  margin-bottom: 10px;
+}
+
+.rv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.rv-title {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #1a1a2e;
+  display: block;
+}
+
+.rv-subtitle {
+  font-size: 9.5pt;
+  color: #444;
+  display: block;
+}
+
+.rv-company {
+  color: #2563eb;
+  font-style: italic;
+}
+
+.rv-date {
+  font-size: 9pt;
+  color: #666;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rv-meta {
+  font-size: 9pt;
+  color: #666;
+  margin: 2px 0 0;
+}
+
+.rv-bullets {
+  margin: 4px 0 0 16px;
+  padding: 0;
+}
+
+.rv-bullets li {
+  font-size: 9.5pt;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+/* SUMMARY */
+.rv-summary {
+  font-size: 9.5pt;
+  color: #333;
+  text-align: justify;
+  margin: 0;
+}
+
+/* SKILLS */
+.rv-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rv-skill-row {
+  font-size: 9.5pt;
+}
+
+.rv-skill-cat {
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-right: 6px;
+}
+
+.rv-skill-items {
+  color: #333;
+}
+
+/* PROJECTS */
+.rv-tech {
+  font-size: 9pt;
+  color: #2563eb;
+  font-style: italic;
+  margin: 2px 0;
+}
+
+.rv-desc {
+  font-size: 9.5pt;
+  color: #333;
+  margin: 2px 0;
+  text-align: justify;
+}
+
+.rv-link {
+  font-size: 9pt;
+  color: #2563eb;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* CERTS */
+.rv-cert {
+  font-size: 9.5pt;
+  margin-bottom: 3px;
+}
+
+.rv-cert-name {
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.rv-cert-meta {
+  color: #555;
+}
+
+/* LANGUAGES */
+.rv-lang-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rv-lang-tag {
+  font-size: 9.5pt;
+  background: #f0f4ff;
+  border: 1px solid #c7d7ff;
+  border-radius: 4px;
+  padding: 2px 10px;
+  color: #1a1a2e;
+}
+
+/* HOBBIES */
+.rv-hobbies {
+  font-size: 9.5pt;
+  color: #333;
+  margin: 0;
+}
+
+@media print {
+  .resume-preview {
+    box-shadow: none;
+    border-radius: 0;
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,59 @@
+# Generated .gitignore for resume-builder project
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs/
+*.log
+log/**/*.log
+
+# Runtime / env
+.env
+.env.*.local
+npm-debug.log*
+
+# Build output
+dist/
+build/
+coverage/
+.cache/
+
+# Frontend
+frontend/node_modules/
+frontend/.env
+frontend/build/
+frontend/.cache/
+frontend/.pnp/
+frontend/.pnp.js
+
+# Backend
+backend/node_modules/
+backend/.env
+backend/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs & editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Archives
+*.tgz
+*.zip
+*.tar.gz
+
+# Misc
+*.localhistory/
+
+# Optional: lockfiles are intentionally not ignored so they stay in source control
