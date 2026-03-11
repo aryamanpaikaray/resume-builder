@@ -23,8 +23,10 @@ export function useAccessTimer() {
   }, [fetchAccess]);
 
   // Count down locally
+  const shouldCountDown = accessAllowed && remainingSeconds > 0;
+
   useEffect(() => {
-    if (!accessAllowed || remainingSeconds === 0) return; // ← guard both conditions
+    if (!shouldCountDown) return;
     const interval = setInterval(() => {
       setRemainingSeconds((prev) => {
         if (prev <= 1) {
@@ -36,7 +38,7 @@ export function useAccessTimer() {
       });
     }, 1000);
     return () => clearInterval(interval);
-  }, [accessAllowed, remainingSeconds === 0]); // ← track when seconds transitions from 0
+  }, [shouldCountDown]);
 
   const formatTime = (seconds) => {
     const m = Math.floor(seconds / 60)
