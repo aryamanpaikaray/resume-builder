@@ -10,6 +10,7 @@ export const updateResume = (id, data) => API.put(`/resume/${id}`, data);
 export const getResume = (id) => API.get(`/resume/${id}`);
 export const downloadResume = (id) => API.post(`/resume/${id}/download`, {}, { responseType: 'blob' });
 export const emailResume = (id, email) => API.post(`/resume/${id}/email`, { email });
+export const resetTimer = () => API.post('/config/reset-timer');
 
 // Admin Endpoints
 export const getAdminResumes = () => API.get('/admin/resumes');

@@ -15,7 +15,7 @@ import AdminPanel from './components/AdminPanel';
 
 import { useAccessTimer } from './hooks/useAccessTimer';
 import { defaultResumeData } from './utils/defaultData';
-import { saveResume, updateResume, updateAdminResume } from './utils/api';
+import { saveResume, updateResume, updateAdminResume, resetTimer } from './utils/api';
 
 import './App.css';
 
@@ -28,9 +28,19 @@ function App() {
   const [isAdminEdit, setIsAdminEdit] = useState(false);
   const previewRef = useRef();
 
-  const { accessAllowed, formattedTime, remainingSeconds, loading } = useAccessTimer();
+  const { accessAllowed, formattedTime, remainingSeconds, loading, fetchAccess } = useAccessTimer();
 
   const update = (field) => (value) => setResumeData(prev => ({ ...prev, [field]: value }));
+
+  const handleResetTimer = async () => {
+    try {
+      await resetTimer();
+      toast.success('Timer reset successfully!');
+      fetchAccess();
+    } catch (err) {
+      toast.error('Failed to reset timer.');
+    }
+  };
 
   const handleSave = async () => {
     if (!resumeData.fullName || !resumeData.email) {
@@ -71,7 +81,7 @@ function App() {
             <span className="logo-text">Resume Builder</span>
           </div>
           <div className="header-right">
-            {!loading && <TimerBanner accessAllowed={accessAllowed} formattedTime={formattedTime} remainingSeconds={remainingSeconds} />}
+            {!loading && <TimerBanner accessAllowed={accessAllowed} formattedTime={formattedTime} remainingSeconds={remainingSeconds} onReset={handleResetTimer} />}
           </div>
         </div>
       </header>
@@ -106,6 +116,9 @@ function App() {
                       Go to Preview & Download
                     </button>
                   )}
+                  <button className="btn btn-secondary" onClick={handleResetTimer} style={{ marginTop: '10px' }}>
+                    Reset Timer
+                  </button>
                 </div>
               </div>
             )}

@@ -53,5 +53,6 @@ export function useAccessTimer() {
     remainingSeconds,
     formattedTime: formatTime(remainingSeconds),
     loading,
+    fetchAccess,
   };
 }
