@@ -11,10 +11,11 @@ import { Certifications, Languages, ListSection } from './components/form/Additi
 import ResumePreview from './components/ResumePreview';
 import ActionBar from './components/ActionBar';
 import TimerBanner from './components/TimerBanner';
+import AdminPanel from './components/AdminPanel';
 
 import { useAccessTimer } from './hooks/useAccessTimer';
 import { defaultResumeData } from './utils/defaultData';
-import { saveResume, updateResume } from './utils/api';
+import { saveResume, updateResume, updateAdminResume } from './utils/api';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ function App() {
   const [password, setPassword] = useState(null);
   const [saving, setSaving] = useState(false);
   const [activeTab, setActiveTab] = useState('form');
+  const [isAdminEdit, setIsAdminEdit] = useState(false);
   const previewRef = useRef();
 
   const { accessAllowed, formattedTime, remainingSeconds, loading } = useAccessTimer();
@@ -37,7 +39,9 @@ function App() {
     setSaving(true);
     try {
       let res;
-      if (resumeId) {
+      if (isAdminEdit) {
+        res = await updateAdminResume(resumeId, resumeData);
+      } else if (resumeId) {
         res = await updateResume(resumeId, resumeData);
       } else {
         res = await saveResume(resumeData);
@@ -54,7 +58,7 @@ function App() {
     }
   };
 
-  const formDisabled = !accessAllowed && accessAllowed !== null;
+  const formDisabled = !isAdminEdit && !accessAllowed && accessAllowed !== null;
 
   return (
     <div className="app">
@@ -78,6 +82,12 @@ function App() {
         </button>
         <button className={`tab ${activeTab === 'preview' ? 'tab-active' : ''}`} onClick={() => setActiveTab('preview')}>
           👁 Preview & Download
+        </button>
+        <button className={`tab ${activeTab === 'admin' ? 'tab-active' : ''}`} onClick={() => {
+          setActiveTab('admin');
+          setIsAdminEdit(false);
+        }}>
+          🛡️ Admin Panel
         </button>
       </div>
 
@@ -147,6 +157,17 @@ function App() {
               <ResumePreview data={resumeData} ref={previewRef} />
             </div>
           </div>
+        )}
+
+        {activeTab === 'admin' && (
+          <AdminPanel 
+            onEdit={(id, data) => {
+              setResumeId(id);
+              setResumeData(data);
+              setIsAdminEdit(true);
+              setActiveTab('form');
+            }} 
+          />
         )}
       </main>
     </div>

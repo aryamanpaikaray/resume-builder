@@ -56,6 +56,7 @@ const initDeploymentTime = async () => {
 // Routes
 app.use("/api/config", require("./routes/config"));
 app.use("/api/resume", require("./routes/resume"));
+app.use("/api/admin", require("./routes/admin"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
