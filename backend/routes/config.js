@@ -39,7 +39,7 @@ router.post('/reset-timer', async (req, res) => {
     const now = new Date().toISOString();
     await Config.findOneAndUpdate(
       { key: 'deploymentTime' },
-      { key: 'deploymentTime', value: now },
+      { $set: { value: now } },
       { upsert: true, new: true }
     );
     res.json({ success: true, deploymentTime: now, message: 'Timer reset. 20 minutes starts now.' });

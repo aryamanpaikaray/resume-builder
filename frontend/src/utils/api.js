@@ -4,7 +4,7 @@ const API = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api',
 });
 
-export const checkAccess = () => API.get('/config/access');
+export const checkAccess = () => API.get(`/config/access?_t=${new Date().getTime()}`);
 export const saveResume = (data) => API.post('/resume', data);
 export const updateResume = (id, data) => API.put(`/resume/${id}`, data);
 export const getResume = (id) => API.get(`/resume/${id}`);
